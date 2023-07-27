@@ -1,27 +1,33 @@
-import React from 'react';
+import React from "react";
 
-const MenuCard = () => {
+const MenuCard = ({ menuData }) => {
   return (
     <>
-    <div className="card-container">
-      <div className="card">
-        <div className="card-body">
-          <span className="card-number card-circle subtle">1</span>
-          <span className="card-author subtle">Breakfast</span>
-          <span className="card-description subtle">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-            possimus nostrum natus ex voluptate inventore eaque iusto ipsa
-            placeat, explicabo eum cupiditate tempora fugit quasi repudiandae
-            quas excepturi, cumque beatae? Et eligendi est provident
-          </span>
-          <div className="card-read">Read more</div>
-        </div>
-        {/* <img src={image} alt="images" className="card-media"/> */}
-        <span className="card-tag subtle">Order Now</span>
-      </div>
-    </div>
+      <section className="main-card-cointainer">
+        {menuData.map((currelem) => {
+          return (
+            <>
+              <div className="card-container" key={currelem.id}>
+                <div className="card">
+                  <div className="card-body">
+                    <span className="card-number card-circle subtle">{currelem.id}</span>
+                    <span className="card-author subtle">{currelem.category}</span>
+                    <h2 className="card-title">{currelem.name}</h2>
+                    <span className="card-description subtle">
+                     {currelem.description}
+                    </span>
+                    <div className="card-read">Read more</div>
+                  </div>
+                  <img src={currelem.image} alt="images" className="card-media"/>
+                  <span className="card-tag subtle">Order Now</span>
+                </div>
+              </div>
+            </>
+          );
+        })}
+      </section>
     </>
-  )
-}
+  );
+};
 
 export default MenuCard;
